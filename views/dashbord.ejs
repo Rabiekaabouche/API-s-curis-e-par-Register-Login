@@ -1,0 +1,27 @@
+<div class="row mb-3 py-1 border-bottom">
+	<div class="col-5 col-md-9 ">
+		<h1>Dashboard</h1>
+	</div>
+	<div class="col-5 col-md-3 d-flex justify-content-center align-items-center">
+		<div class="btn btn-primary disabled mx-3"><%=user.emailUser%></div>
+		<form action="/logout" method="POST">
+			<button class="btn btn-outline-primary" type="submit">Logout</button>
+		</form>
+	</div>
+</div>
+<table class="table table-hover table-bordered mt-5 w-50 mx-auto">
+	<thead>
+		<tr>
+			<th scope="col">User</th>
+			<th scope="col">Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%if(users.length>0) { %> <%users.forEach((actualUser, i)=> { %>
+		<tr <% if(actualUser.email == user.emailUser) {%> class='table-active' <% } %>>
+			<th scope="row"><%= i+1 %></th>
+			<td><%=actualUser.email%></td>
+		</tr>
+		<%})%> <%}%>
+	</tbody>
+</table>
